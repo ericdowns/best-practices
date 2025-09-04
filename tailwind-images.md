@@ -46,7 +46,7 @@ pb-[140%]    /* 5:7 ratio - Medium portrait */
 pb-[150%]    /* 2:3 ratio - Tall portrait */
 ```
 
-## Real-World Examples
+## Static HTML Implementation
 
 ### Portfolio Item (4:3 ratio)
 ```html
@@ -82,6 +82,75 @@ pb-[150%]    /* 2:3 ratio - Tall portrait */
            class="absolute inset-0 w-full h-full object-cover">
         <source src="video.mp4" type="video/mp4">
     </video>
+</div>
+```
+
+## WordPress Implementation
+
+### Portfolio Item with ACF Image Field
+```php
+<?php $image = get_field('portfolio_image'); ?>
+<?php if ($image): ?>
+    <div class="relative pb-[74.07%] overflow-hidden rounded-lg">
+        <img src="<?php echo esc_url($image['url']); ?>" 
+             alt="<?php echo esc_attr($image['alt']); ?>"
+             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+    </div>
+<?php else: ?>
+    <div class="relative pb-[74.07%] overflow-hidden rounded-lg">
+        <img src="https://dummyimage.com/400x300/BABFBC/BABFBC" 
+             alt="Placeholder image"
+             class="absolute inset-0 w-full h-full object-cover">
+    </div>
+<?php endif; ?>
+```
+
+### Featured Image with Fallback
+```php
+<div class="relative pb-[74.07%] overflow-hidden rounded-lg">
+    <?php if (has_post_thumbnail()): ?>
+        <?php the_post_thumbnail('large', [
+            'class' => 'absolute inset-0 w-full h-full object-cover',
+            'alt' => get_the_title()
+        ]); ?>
+    <?php else: ?>
+        <img src="https://dummyimage.com/400x300/BABFBC/BABFBC" 
+             alt="<?php echo esc_attr(get_the_title()); ?>"
+             class="absolute inset-0 w-full h-full object-cover">
+    <?php endif; ?>
+</div>
+```
+
+### Team Profile with ACF
+```php
+<?php $team_image = get_field('team_member_photo'); ?>
+<div class="relative pb-[125%] mb-4 overflow-hidden">
+    <?php if ($team_image): ?>
+        <img src="<?php echo esc_url($team_image['url']); ?>" 
+             alt="<?php echo esc_attr($team_image['alt'] ?: get_the_title()); ?>"
+             class="absolute inset-0 w-full h-full object-cover">
+    <?php else: ?>
+        <img src="https://dummyimage.com/300x400/BABFBC/BABFBC" 
+             alt="<?php echo esc_attr(get_the_title()); ?>"
+             class="absolute inset-0 w-full h-full object-cover">
+    <?php endif; ?>
+</div>
+```
+
+### Video Container with ACF
+```php
+<?php $video = get_field('video_file'); ?>
+<div class="relative pb-[100%] overflow-hidden rounded-lg">
+    <?php if ($video): ?>
+        <video autoplay muted loop playsinline 
+               class="absolute inset-0 w-full h-full object-cover">
+            <source src="<?php echo esc_url($video['url']); ?>" type="video/mp4">
+        </video>
+    <?php else: ?>
+        <img src="https://dummyimage.com/400x400/BABFBC/BABFBC" 
+             alt="Video placeholder"
+             class="absolute inset-0 w-full h-full object-cover">
+    <?php endif; ?>
 </div>
 ```
 

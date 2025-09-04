@@ -22,6 +22,8 @@ When working on a project, you can:
 ## Current Best Practices
 
 - [`tailwind-images.md`](tailwind-images.md) - Image handling using pb-bottom method with absolute positioning
+- [`tailwind-containers.md`](tailwind-containers.md) - Container and layout system using `.full` and `.content` classes
+- [`wordpress-modules.md`](wordpress-modules.md) - ACF module architecture and organization system
 
 ## Adding New Best Practices
 
@@ -46,11 +48,16 @@ Simply share this repo URL with Claude and specify which practice to implement:
 ### Example Usage:
 > "Please implement the image handling pattern from the tailwind-images.md file in this repository"
 
-### Other Examples:
-> "Use the pb-bottom method from tailwind-images.md for the hero section"
+### Implementation-Specific Examples:
+> "Use the WordPress section from tailwind-images.md for the portfolio grid"
 > 
-> "Follow the image handling best practice for the portfolio grid"
+> "Follow the static HTML approach from tailwind-containers.md"
 > 
-> "Apply the tailwind-images pattern to handle the team member photos"
+> "Apply the container system from tailwind-containers.md with the `.full` and `.content` classes"
+> 
+> "Implement the module architecture from wordpress-modules.md for the new content blocks"
 
-Claude will automatically read the specified file and implement the documented patterns in your current project.
+### Multi-Pattern Examples:
+> "Use the container system from tailwind-containers.md and the WordPress image handling from tailwind-images.md"
+
+Claude will automatically read the specified files and sections, then implement the documented patterns in your current project.
