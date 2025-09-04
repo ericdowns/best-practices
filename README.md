@@ -43,4 +43,14 @@ Use descriptive, kebab-case filenames:
 
 Simply share this repo URL with Claude and specify which practice to implement:
 
+### Example Usage:
 > "Please implement the image handling pattern from the tailwind-images.md file in this repository"
+
+### Other Examples:
+> "Use the pb-bottom method from tailwind-images.md for the hero section"
+> 
+> "Follow the image handling best practice for the portfolio grid"
+> 
+> "Apply the tailwind-images pattern to handle the team member photos"
+
+Claude will automatically read the specified file and implement the documented patterns in your current project.
