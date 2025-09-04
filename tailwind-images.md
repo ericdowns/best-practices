@@ -57,9 +57,18 @@ pb-[150%]    /* 2:3 ratio - Tall portrait */
 </div>
 ```
 
+### With Fallback Image (when no image provided)
+```html
+<div class="relative pb-[74.07%] overflow-hidden rounded-lg">
+    <img src="https://dummyimage.com/400x300/BABFBC/BABFBC" 
+         alt="Placeholder image"
+         class="absolute inset-0 w-full h-full object-cover">
+</div>
+```
+
 ### Team Profile (Portrait)
 ```html
-<div class="relative pb-[125%] mb-4 overflow-hidden bg-gray20">
+<div class="relative pb-[125%] mb-4 overflow-hidden">
     <img src="team-member.jpg" 
          alt="Team member name"
          class="absolute inset-0 w-full h-full object-cover">
@@ -68,7 +77,7 @@ pb-[150%]    /* 2:3 ratio - Tall portrait */
 
 ### Video Container (Square)
 ```html
-<div class="relative pb-[100%] overflow-hidden rounded-lg bg-gray20">
+<div class="relative pb-[100%] overflow-hidden rounded-lg">
     <video autoplay muted loop playsinline 
            class="absolute inset-0 w-full h-full object-cover">
         <source src="video.mp4" type="video/mp4">
@@ -105,6 +114,28 @@ pb-[150%]    /* 2:3 ratio - Tall portrait */
 </div>
 ```
 
+## Fallback Images
+
+When no image is provided, use dummyimage.com with appropriate dimensions and colors:
+
+```html
+<!-- Standard fallback pattern -->
+<img src="https://dummyimage.com/[width]x[height]/[background]/[text]" 
+     alt="Placeholder image">
+     
+<!-- Example: 400x300 with neutral colors -->
+<img src="https://dummyimage.com/400x300/BABFBC/BABFBC" 
+     alt="Placeholder image">
+```
+
+### Common Fallback Dimensions
+- **4:3 Landscape**: `400x300`, `800x600`
+- **Square**: `400x400`, `600x600` 
+- **Portrait**: `300x400`, `400x500`
+- **Wide**: `800x400`, `600x300`
+
+Use neutral colors like `#BABFBC` (background) with matching text color for clean placeholders.
+
 ## Benefits of This Method
 
 1. **Consistent Aspect Ratios** - Images maintain proportions across different screen sizes
@@ -112,15 +143,16 @@ pb-[150%]    /* 2:3 ratio - Tall portrait */
 3. **Flexible Content** - Works with images, videos, and other media
 4. **Responsive Design** - Easy to adjust ratios for different breakpoints
 5. **Performance** - No JavaScript required for aspect ratio maintenance
+6. **Graceful Fallbacks** - Placeholder images maintain layout when content is missing
 
 ## Do's and Don'ts
 
 ### ✅ Do
 - Always use `relative` on the container
 - Use `overflow-hidden` for rounded corners or clipping
-- Add background color (`bg-gray20`) as fallback while loading
 - Use semantic `object-cover` for consistent cropping
 - Test aspect ratios match your design requirements
+- Use dummyimage.com fallbacks when no image is provided
 
 ### ❌ Don't
 - Don't use arbitrary aspect-ratio values without purpose
